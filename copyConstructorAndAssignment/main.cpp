@@ -43,10 +43,23 @@ class fake_vector_class {
     }
 
     fake_vector_class(const fake_vector_class& copy) {
-    
+      cout << "Copy constructor called" << endl;
+      sz = copy.sz;
+      elem = new int[sz];
+      for(int i=0; i<sz; i++)
+        elem[i] = copy.elem[i];
     }
 
     fake_vector_class& operator=(const fake_vector_class& copy) {
+      cout << "Copy assignment called" << endl;
+      sz = copy.sz;
+
+      int *new_elem = new int[sz];
+      for(int i=0; i<sz; i++)
+        new_elem[i] = copy.elem[i];
+      delete[] elem;
+      elem = new_elem;  
+
       return *this;
     }
 
@@ -75,12 +88,18 @@ void receive_example(example e) {
 
 void play_with_fake_vector() {
   fake_vector_class fake_vector(5);
+  
+  fake_vector_class fake_vector_2 = fake_vector;
+  fake_vector.print_values();
+  fake_vector_2.print_values();
 
   for (int i = 0; i < 5; i += 1) {
     fake_vector[i] = i + 1;
   }
 
+  fake_vector_2 = fake_vector;
   fake_vector.print_values();
+  fake_vector_2.print_values();
 }
  
 int main() {
