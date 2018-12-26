@@ -27,9 +27,9 @@ int main()
     cerr << "Error: " << exception << '\n';
   }
   catch (...) // catch-all handler
-	{
-		cerr << "We caught an exception of an undetermined type\n";
-	}
+  {
+    cerr << "We caught an exception of an undetermined type\n";
+  }
  
   cout << "Continuing on our merry way\n";
  

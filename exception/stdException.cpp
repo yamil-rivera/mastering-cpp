@@ -4,15 +4,15 @@
 
 int main()
 {
-	try
-	{
-		std::string s;
+  try
+  {
+    std::string s;
     s.resize(-1);
-	}
+  }
   catch (std::exception &exception)
   {
     std::cerr << "exception: " << exception.what() << '\n';
   }
  
-	return 0;
+  return 0;
 }
