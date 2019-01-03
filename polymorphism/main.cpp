@@ -12,40 +12,40 @@ void printName(const Base base) // note: base passed by value, not reference
 
 void slicingVectors()
 {
-	vector<Base> v;
-	v.push_back(Base()); // add a Base object to our vector
-	v.push_back(Derived(6)); // add a Derived object to our vector
+    vector<Base> v;
+    v.push_back(Base()); // add a Base object to our vector
+    v.push_back(Derived(6)); // add a Derived object to our vector
  
-        // Print out all of the elements in our vector
-	for (int count = 0; count < v.size(); ++count)
-		cout << "Index [" << count << "] is a " << v[count].getName() << "\n";
+    // Print out all of the elements in our vector
+    for (int count = 0; count < v.size(); ++count)
+        cout << "Index [" << count << "] is a " << v[count].getName() << "\n";
 }
 
 void slicingVectorsPtr()
 {
-	vector<Base*> v;
-	v.push_back(new Base()); // add a Base object to our vector
-	v.push_back(new Derived(6)); // add a Derived object to our vector
+    vector<Base*> v;
+    v.push_back(new Base()); // add a Base object to our vector
+    v.push_back(new Derived(6)); // add a Derived object to our vector
  
-  // Print out all of the elements in our vector
-	for (int count = 0; count < v.size(); ++count)
-		cout << "Index [" << count << "] is a " << v[count]->getName() << "\n";
+    // Print out all of the elements in our vector
+    for (int count = 0; count < v.size(); ++count)
+        cout << "Index [" << count << "] is a " << v[count]->getName() << "\n";
  
-	for (int count = 0; count < v.size(); ++count)
-		delete v[count];
+    for (int count = 0; count < v.size(); ++count)
+        delete v[count];
 }
 
 void slicingVectorsRefWrapper()
 {
-	vector<reference_wrapper<Base> > v; // our vector is a vector of reference_wrapper wrapped Base (not Base&)
-	Base b; // b and d can't be anonymous objects
-	Derived d(6);
-	v.push_back(b); // add a Base object to our vector
-	v.push_back(d); // add a Derived object to our vector
+    vector<reference_wrapper<Base> > v; // our vector is a vector of reference_wrapper wrapped Base (not Base&)
+    Base b;
+    Derived d(6);
+    v.push_back(b); // add a Base object to our vector
+    v.push_back(d); // add a Derived object to our vector
  
-	// Print out all of the elements in our vector
-	for (int count = 0; count < v.size(); ++count)
-		cout << "Index [" << count << "] is a " << v[count].get().getName() << "\n"; // we use .get() to get our element from the wrapper
+    // Print out all of the elements in our vector
+    for (int count = 0; count < v.size(); ++count)
+        cout << "Index [" << count << "] is a " << v[count].get().getName() << "\n"; // we use .get() to get our element from the wrapper
 }
 
 void frankenobject(){
